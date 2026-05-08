@@ -1,21 +1,19 @@
 import { useState } from "react";
 import { searchCocktails } from "../services/api";
-import { Drink } from "../types/drinks";
+import type { Drink } from "../types/drinks";
 import { Link } from "react-router-dom";
-
-<Link to="/detail" state={{ drink }}>
-  {drink.name}
-</Link>
 
 function List() {
   const [query, setQuery] = useState("");
   const [drinks, setDrinks] = useState<Drink[]>([]);
   const [error, setError] = useState("");
-
+  
   const handleSearch = async () => {
     try {
       setError("");
+
       const data = await searchCocktails(query);
+
       setDrinks(data);
     } catch (err) {
       setError("Something went wrong");
@@ -23,25 +21,51 @@ function List() {
   };
 
   return (
-    <div>
-      <h1>Search Cocktails</h1>
+  <div className="container py-4">
+    <h1 className="mb-4 text-center">Cocktail Search</h1>
 
+    <div className="d-flex gap-2 mb-4">
       <input
+        className="form-control"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search cocktail..."
       />
-      <button onClick={handleSearch}>Search</button>
 
-      {error && <p>{error}</p>}
+      <button className="btn btn-primary" onClick={handleSearch}>
+        Search
+      </button>
+    </div>
 
-      {drinks.map((drink, index) => (
-        <div key={index}>
-          <h3>{drink.name}</h3>
+    {error && <p className="text-danger">{error}</p>}
+
+    <div className="row">
+      {drinks.map((drink) => (
+        <div className="col-md-4 mb-4" key={drink.id}>
+          <div className="card h-100 shadow-sm">
+            <img
+              src={drink.image}
+              className="card-img-top"
+              alt={drink.name}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{drink.name}</h5>
+
+              <Link
+                to="/detail"
+                state={{ drink }}
+                className="btn btn-outline-dark"
+              >
+                View Details
+              </Link>
+            </div>
+          </div>
         </div>
       ))}
     </div>
-  );
+  </div>
+);
 }
 
 export default List;

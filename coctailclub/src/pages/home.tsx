@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getRandomCocktail } from "../services/api";
-import { Drink } from "../types/Drink";
+import type { Drink } from "../types/drinks";
 
 function Home() {
   const [drink, setDrink] = useState<Drink | null>(null);
@@ -13,9 +13,9 @@ function Home() {
 
   return (
     <div>
-      <h1>{drink.strDrink}</h1>
-      <img src={drink.strDrinkThumb} width="200" />
-      <p>{drink.strInstructions}</p>
+      <h1>{drink.name}</h1>
+      <img src={drink.image} width="200" />
+      <p>{drink.instructions}</p>
     </div>
   );
 }
