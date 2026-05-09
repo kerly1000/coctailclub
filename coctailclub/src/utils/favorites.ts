@@ -18,3 +18,24 @@ export const addFavorite = (drink: Drink) => {
     JSON.stringify(favorites)
   );
 };
+
+export const isFavorite = (drinkId: string): boolean => {
+  const favorites = getFavorites();
+
+  return favorites.some(
+    (drink) => drink.id === drinkId
+  );
+};
+
+export const removeFavorite = (drinkId: string) => {
+  const favorites = getFavorites();
+
+  const updatedFavorites = favorites.filter(
+    (drink) => drink.id !== drinkId
+  );
+
+  localStorage.setItem(
+    FAVORITES_KEY,
+    JSON.stringify(updatedFavorites)
+  );
+};

@@ -24,17 +24,27 @@ function List() {
   <div className="container py-4">
     <h1 className="mb-4 text-center">Cocktail Search</h1>
 
-    <div className="d-flex gap-2 mb-4">
-      <input
-        className="form-control"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search cocktail..."
-      />
+    <div
+      className="d-flex justify-content-center mb-5"
+>
+      <div
+        className="input-group cocktail-search"
+        style={{ maxWidth: "500px" }}
+      >
+        <input
+          className="form-control"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search cocktail..."
+        />
 
-      <button className="btn btn-primary" onClick={handleSearch}>
-        Search
-      </button>
+        <button
+          className="btn btn-warning"
+          onClick={handleSearch}
+        >
+          <i className="bi bi-search"></i>
+        </button>
+      </div>
     </div>
 
     {error && <p className="text-danger">{error}</p>}
@@ -52,9 +62,7 @@ function List() {
             <div className="card-body">
               <h5 className="card-title">{drink.name}</h5>
 
-              <Link
-                to="/detail"
-                state={{ drink }}
+              <Link to={`/detail/${drink.id}`}
                 className="btn btn-outline-dark"
               >
                 View Details

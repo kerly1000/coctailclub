@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home";
 import List from "./pages/list";
-import Detail from "./pages/Detail";
+import Detail from "./pages/detail";
 import Navbar from "./components/Navbar";
 import Favorites from "./pages/Favorites";
 
@@ -15,7 +15,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/list" element={<List />} />
-            <Route path="/detail" element={<Detail />} />
+            <Route path="/detail/:id" element={<Detail />} />
             <Route path="/favorites" element={<Favorites />} />
         </Routes>
     </BrowserRouter>

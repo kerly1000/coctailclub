@@ -11,7 +11,7 @@ export const mapDrink = (apiDrink: ApiDrink): Drink => {
       ingredients.push(ingredient);
     }
   }
-
+ 
   return {
     id: apiDrink.idDrink,
     name: apiDrink.strDrink,
@@ -25,6 +25,17 @@ export const mapDrink = (apiDrink: ApiDrink): Drink => {
 export const getRandomCocktail = async (): Promise<Drink> => {
   const response = await fetch(`${BASE_URL}/random.php`);
   const data = await response.json();
+
+  return mapDrink(data.drinks[0]);
+};
+
+export const getCocktailById = async (id: string): Promise<Drink | null> => {
+  const response = await fetch(`${BASE_URL}/lookup.php?i=${id}`);
+  const data: { drinks: ApiDrink[] | null } = await response.json();
+
+  if (!data.drinks) {
+    return null;
+  }
 
   return mapDrink(data.drinks[0]);
 };
