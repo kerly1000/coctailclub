@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+![Cocktail Club avakuva](./src/assets/cocktailclub_screenshot.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Cocktail Club on kokteiliretseptide leht, kus kasutaja saab:
+ - juhuslikke kokteilide pilte, mille kohta saab huvi korral avada detailse vaate koostisosade ja valmistusjuhendiga 
+ - meeldiva retsepti lisada lemmikute/Favorites nimekirja 
+ - favorites nimekirjast kokteile eemaldada või avada detailset vaadet koostisosade ja valmistusjuhendiga
+- otsida kokteile nime järgi
 
-## React Compiler
+Leht on integreeritud Cocktail APIga, sellel on otsingufunktsioon, detailivaade, localStorage'isse salvestamine Favorites nimekirjas, responsive disain, React Router navigeerimine.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Lehel kasutatud tehnoloogiad: 
+React, TypeScript, Vite, Bootstrap, React Router, TheCocktailDB API (https://www.thecocktaildb.com/api.php)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Live leht asub:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+https://kerly1000.github.io/cocktailclub/
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Installeerimine: 
+Repositooriumi kloonimiseks: 
+git https://github.com/kerly1000/cocktailclub.git 
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+npm install
+npm i react
+npm i react-dom
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Kohalikus serveris avamiseks:
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+
+
+
+
+
+
