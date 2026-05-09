@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home";
 import List from "./pages/list";
@@ -10,7 +10,7 @@ import Favorites from "./pages/Favorites";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
         <Navbar/>
         <Routes>
             <Route path="/" element={<Home />} />
@@ -18,7 +18,7 @@ function App() {
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/favorites" element={<Favorites />} />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
